@@ -1,4 +1,4 @@
-# AlgorithmicTrading-ML-capstone-Udacity
+# algorithmic trading with deep learning
 algorithmic trading using machine learning and deep learning algorithms
 
 This project constructs an algorithmic trading system using Python libraries including  Numpy, Pandas, Matplotlib, Scikit-learn and TensorFlow.
