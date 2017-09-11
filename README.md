@@ -1,5 +1,5 @@
 # AlgorithmicTrading-ML-capstone-Udacity
-algorithmic trading using machine learning and deep learning algorithms (capstone project of Machine Learning Engineer Nanodegree - Udacity)
+algorithmic trading using machine learning and deep learning algorithms
 
 This project constructs an algorithmic trading system using Python libraries including  Numpy, Pandas, Matplotlib, Scikit-learn and TensorFlow.
 It is a real-time system which is able to process streaming financial data. Specifically, it connects to the Oanda platform for Forex trading.
