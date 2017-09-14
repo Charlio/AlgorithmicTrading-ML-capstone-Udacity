@@ -1,9 +1,13 @@
 # algorithmic trading with deep learning
 algorithmic trading using machine learning and deep learning algorithms
 
-This project constructs an algorithmic trading system using Python libraries including  Numpy, Pandas, Matplotlib, Scikit-learn and TensorFlow.
-It is a real-time system which is able to process streaming financial data. Specifically, it connects to the Oanda platform for Forex trading.
-Moreover, event-based backtesting is provided. In addition, severy machine learning and deep learning algorithms are used to predict market 
-movement directions as well as market prices. Then trading strategies use these predictions to generate transaction signals to produce alpha 
-profits. Finally, performance analysis is conducted. Please notice that this project can be directly used for real trading. So use and modify 
-it at your own risk. The author will not be responsible for any losses in your real trading based on the content of this project.
+This project constructs an algorithmic trading system using Python libraries Numpy, Pandas, Matplotlib, Scikit-learn and TensorFlow.
+The trading platform will incorporate machine learning and deep learning classification algorithms to learn and predict market 
+movement directions in order to place long or short orders to generate an over-benchmark cumulative return including transaction costs.
+
+## Stage One: give vectorized backtesting demo
+## Stage Two: add logistic regression, SVM and decision tree algorithms into the vectorized backtester
+## Stage Three: add a simple neural network and a complex convolutional neural network into the vectoized backtester
+## Stage Four: construct an event-based backtester with object-oriented design
+## Stage Five: learn and predict with the algorithms using the event-based backtester
+## Stage Six: add outputs, visualization 

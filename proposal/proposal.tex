@@ -53,8 +53,8 @@
 
 %%% The "real" document content comes below...
 
-\title{Algorithmic Trading with Machine Learning}
-\author{Chao (Charlio) Xu}
+\title{Algorithmic Trading with Machine Learning and Deep Learning}
+\author{Charlio Xu}
 %\date{} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed 
 
@@ -62,35 +62,69 @@
 \maketitle
 
 \section{Introduction}
-algorithmic trading of equities in Python with machine learning and deep learning algorithms to predict market movement directions and equity prices in order to generate extra cumulative returns over the benchmark returns
+This project sets up an algorithmic trading platform which incorporates various kinds of machine learning and deep learning methods to learn and predict market movement directions in order to generate extra cumulative returns over the benchmark returns.
 
 
 \section{Domain Background}
-the field of research where the project is derived: automatic trading of equities with predefined algorithms 
+the field of research where the project is derived: 
+
+a. automatic trading of equities with predefined algorithms, order placement is determined by algorithms 
+
+b. prediction of market movement directions vs price prediction, then place long or short order
+
+c. classification problem with labels of two categories
+
+d. machine learning and deep learning algorithms can be used
+
+
 
 
 \section{Problem Statement}
-a problem being investigated for which a solution will be defined: how to predict the market movement directions, and further the equity prices
+a problem being investigated for which a solution will be defined:
+
+given a history of past prices of a stock or other equities, how can we predict its movement directions (upwards or downwards) in the future 
 
 
 \section{Datasets and Inputs}
-data or inputs being used for the problem: historic prices of equities from Quandl or Oanda, real-time streaming price data for prediction and testing
+data or inputs being used for the problem: 
+
+a. historical daily closed prices of stocks from Yahoo, or high-frequency tick data
+
+b. input will be time series price data of a stock: time-indexed daily closed prices (float)
 
 
 \section{Solution Statement}
-a the solution proposed for the problem given: supervised classification learning to predict market movement directions, and supervised regression learning to predict equity prices; further to use neural networks to enhance the learning 
+a the solution proposed for the problem given: 
+
+The problem is a classification problem, so I will use supervised learning of classification like logistic regression, SVM, or dicision tree, and deep learning methods like simple neural network or convolutional neural network to tackle the problem.
 
 
 \section{Benchmark Model}
-some simple or historical model or result to compare the defined solution to: simple moving average, momentum
+some simple or historical model or result to compare the defined solution to: 
+
+I will use classical simple trading strategies as benchmark models, which include simple moving average, momentum and mean reversion methods. 
+
+Moreover, I will also compare the machine learning and deep learning methods. 
 
 
 \section{Evaluation Metrics}
-functional representations for how the solution can be measured: cumulative returns excluding transaction costs or not
+functional representations for how the solution can be measured: 
+
+On the machine learning level, I will use accuracy for our classification problem.
+
+ON the algorithmic trading level, I will use the cumulative returns including transaction costs as the evluation metric and compare it with the realized return in a plot.
 
 
 \section{Project Design}
-how the solution will be developed and results obtained: develop in Python; pandas to download financial data; scikit-learn for machine learning algorithms; TensorFlow or Keras for neural networks deep learning
+how the solution will be developed and results obtained: 
+
+For the core algorithms, I will use classification algorithms in scikit-learn as well as construct neural networks in TensorFlow or Keras.
+
+For the learning process, I will first use vectorized backtesting in numpy to have a first look at the performance of an algorithm, and then use event-based backtesting with object-oriented programming paradign to enhance the learning process.
+
+Data will be downloaded from Yahoo! Finance and preprocessed with Pandas. Since the data is time series, spliting it into training, validating and testing sets is easy by simply cutting the time line into three pieces.
+
+Evaluation will be provided with an accuracy analysis, but more trading-oriented performance will be visualized in a plot to compare the cumulative returns between given by the algorithm and the realized historic return.
 
 
 \end{document}
