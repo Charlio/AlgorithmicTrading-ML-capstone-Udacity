@@ -51,22 +51,40 @@ sma.plot_results()
 
 # Brute Force Optimization
 import itertools as it
-
-results = pd.DataFrame()
-for SMA1, SMA2 in it.product(range(10, 31, 10), range(50, 101, 10)):
-    print(SMA1, SMA2)
-    result = sma.run_strategy(SMA1, SMA2)
-    print(result)
-    results = results.append(pd.DataFrame({'SMA1': SMA1, 'SMA2': SMA2,
-                                           'CReturns': result['CReturns'],
-                                           'CStrategy': result['CStrategy']},
-                                           index=[0]),
-                             ignore_index=True)
+    
+                             
 # results['CStrategy'] > results['CReturns']
-    
+# results['CStrategy'].max()
+# iloc = results['CStrategy'].argmax()
+# results.iloc[iloc]
+
+class SMAVectorizedOptimizer(SMAVectorizedBacktester):
+    def optimize_parameters(self, SMA1_range, SMA2_range):
+        self.brute_force = pd.DataFrame()
+        for SMA1, SMA2 in it.product(SMA1_range, SMA2_range):
+            result = self.run_strategy(SMA1, SMA2)
+            self.brute_force = self.brute_force.append(
+                                    pd.DataFrame({'SMA1': SMA1, 'SMA2': SMA2,
+                                                  'CReturns': result['CReturns'],
+                                                  'CStrategy': result['CStrategy']},
+                                                 index=[0]),
+                                    ignore_index=True)
+        return self.bruself.iloc[self.brute_force['CStrategy'].argmax()]
         
-        
-    
+# smabf = SMAVectorizedOptimizer(symobl='AAPL', start='2010-1-1', end='2017-8-31', tc=0.01)
+# smabf.run_strategy(42, 252)
+# smabf.optimize_parameters(range(30, 51, 10), range(220, 261, 10))
+# smabf.brute_force
+
+# in-sample and out-of-sample 
+
+smaio = SMAVectorizedOptimizer(symbol='AAPL', start='2010-1-1', end='2014-1-1', tc=0.01)
+smaio.optimize_parameters(range(20, 51, 2), range(210, 271, 10))
+
+# 220 days cut out due to SMA2
+smaio = SMAVectorizedOptimizer(symbol='AAPL', start='2013-3-31', end='2017-8-31', tc=0.01)
+smaio.run_strategy(40, 220)
+
     
 
 
