@@ -50,20 +50,27 @@ class BacktestBase(object):
         self.units += units
         self.trades += 1
         print('%s | buying %4d units at %8.2f' % (date, units, price))
-        self.print_balance(data)
+        self.print_balance(date)
         
     def place_sell_order(self, bar, units=None, amount=None):
         date, price = self.get_date_price(bar)
         if units is None:
             units = math.floor(amount / price) # ftc, ptc ? 
-        self.amount -= (units * price) * (1 + self.ptc) + self.ftc
-        self.units += units
+        self.amount += (units * price) * (1 - self.ptc) - self.ftc
+        self.units -= units
         self.trades += 1
-        print('%s | buying %4d units at %8.2f' % (date, units, price))
-        self.print_balance(data)
+        print('%s | selling %4d units at %8.2f' % (date, units, price))
+        self.print_balance(date)
         
-        
-        
+    def close_out(self, bar):
+        date, price = self.get_date_price(bar)
+        self.amount += (self.units * price) # include ftc/ptc ?
+        print(50 * '=')
+        print('%s | buying/selling %4d units at %8.2f' % (date, self.units, price))
+        print('Final balance [$]: %8.2f' % self.amount)
+        perf = (self.amount - self.initial_amount) / self.initial_amount * 100
+        print('Performance  [%%]: %8.2f' % perf)
+        print('Trades       [#]: %8d' % self.trades)
         
         
     
@@ -72,7 +79,17 @@ class BacktestBase(object):
 # bb.print_balance()
 # bb.get_date_price(10)
 # bb.place_buy_order(bar=10, units=100)
-    
+# bb.place_sell_order(bar=20, units=50)    
+# bb.place_sell_order(bar=20, amount=1000)
+# bb.close_out(50)
+
+
+
+
+
+
+
+
 
     
     
